@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -36,15 +37,12 @@ const Navbar = () => {
             <a href="#features" className="text-gray-700 hover:text-primary-600 font-medium transition-colors">
               Features
             </a>
-            <a href="#testimonials" className="text-gray-700 hover:text-primary-600 font-medium transition-colors">
-              Testimonials
-            </a>
             <a href="#about" className="text-gray-700 hover:text-primary-600 font-medium transition-colors">
               About
             </a>
-            <a href="/login" className="text-gray-700 hover:text-primary-600 font-medium transition-colors">
-              Login
-            </a>
+            <Link to="/login" className="text-gray-700 hover:text-primary-600 font-medium transition-colors">
+            Login
+            </Link>
             <a 
               href="/register" 
               className="btn btn-primary"
@@ -82,13 +80,6 @@ const Navbar = () => {
                 onClick={() => setIsMenuOpen(false)}
               >
                 Features
-              </a>
-              <a 
-                href="#testimonials" 
-                className="text-gray-700 hover:text-primary-600 font-medium py-2"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Testimonials
               </a>
               <a 
                 href="#about" 

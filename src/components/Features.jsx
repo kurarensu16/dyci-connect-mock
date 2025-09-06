@@ -1,106 +1,236 @@
 import React from 'react';
 
 const Features = () => {
-  const features = [
+  const handbookFeatures = [
     {
-      icon: '📚',
-      title: 'Digital Handbook',
-      description: 'Access all college policies, anytime, anywhere. Even offline with our PWA technology.',
-      color: 'blue'
+      icon: '🎓',
+      title: 'Admission & Enrollment',
+      description: 'Complete guide to enrollment procedures, subject loading, and registration changes.',
+      link: '/handbook/chapter-1'
     },
     {
+      icon: '📚',
+      title: 'Academic Policies',
+      description: 'Access grading systems, examination policies, retention rules, and graduation requirements.',
+      link: '/handbook/chapter-2'
+    },
+    {
+      icon: '💰',
+      title: 'Scholarships & Discounts',
+      description: 'Explore academic, cultural, athletic scholarships, and various discount programs available.',
+      link: '/handbook/chapter-3'
+    },
+    {
+      icon: '🏫',
+      title: 'Student Services',
+      description: 'Discover library services, registrar office, research centers, and campus facilities.',
+      link: '/handbook/chapter-4'
+    },
+    {
+      icon: '⚖️',
+      title: 'Student Discipline',
+      description: 'Understand the code of discipline, general decorum, and relevant campus policies.',
+      link: '/handbook/chapter-5'
+    },
+    {
+      icon: '📅',
+      title: 'Academic Calendar',
+      description: 'Stay updated with college events, examinations, holidays, and important deadlines.',
+      link: '/calendar'
+    },
+  ];
+
+  const toolsFeatures = [
+    {
       icon: '📁',
-      title: 'File Vault',
+      title: 'Personal File Vault',
       description: 'Securely store and organize your notes, documents, and study materials with generous storage space.',
-      color: 'green'
+      link: '/files',
+      requiresLogin: true
     },
     {
       icon: '📊',
       title: 'Grade Tracker',
       description: 'Monitor your academic performance, calculate your GPA, and track your progress over time.',
-      color: 'purple'
+      link: '/grades',
+      requiresLogin: true
     },
     {
       icon: '✅',
       title: 'Task Manager',
       description: 'Stay on top of assignments, deadlines, and projects with our intuitive to-do list and reminders.',
-      color: 'orange'
+      link: '/tasks',
+      requiresLogin: true
     },
     {
       icon: '🔐',
-      title: 'Secure Login',
-      description: 'Single Sign-On integration with your college credentials for maximum security and convenience.',
-      color: 'red'
+      title: 'Digital Policy Acceptance',
+      description: 'Digitally acknowledge and track your acceptance of important college policies and procedures.',
+      link: '/policies',
+      requiresLogin: true
     },
     {
       icon: '📱',
-      title: 'Mobile First',
-      description: 'Fully responsive design that works perfectly on phones, tablets, and desktops.',
-      color: 'pink'
+      title: 'Mobile Access',
+      description: 'Access all your academic resources on-the-go with our fully responsive mobile interface.',
+      link: '/mobile',
+      requiresLogin: false
+    },
+    {
+      icon: '🌐',
+      title: 'Offline Access',
+      description: 'Continue working even without internet connection - your data syncs when you\'re back online.',
+      link: '/offline',
+      requiresLogin: true
     }
   ];
 
-  const colorMap = {
-    blue: 'from-blue-500 to-blue-600',
-    green: 'from-green-500 to-green-600',
-    purple: 'from-purple-500 to-purple-600',
-    orange: 'from-orange-500 to-orange-600',
-    red: 'from-red-500 to-red-600',
-    pink: 'from-pink-500 to-pink-600'
-  };
-
   return (
-    <section id="features" className="section-padding bg-white">
+    <section id="features" className="section-padding bg-gray-50">
       <div className="container-custom">
+        {/* Handbook Features */}
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
-            Everything You Need in One Place
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            Complete Student Handbook
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Designed specifically for DYCI students, our platform integrates all the tools you need for academic success.
+            Everything you need to navigate your academic journey at Dr. Yanga's Colleges
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {features.map((feature, index) => (
-            <div
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
+          {handbookFeatures.map((feature, index) => (
+            <a
               key={index}
-              className="group relative bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 hover:border-primary-100"
+              href={feature.link}
+              className="block group bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-blue-200"
             >
-              {/* Background gradient */}
-              <div className={`absolute inset-0 bg-gradient-to-br ${colorMap[feature.color]} opacity-0 group-hover:opacity-5 rounded-2xl transition-opacity duration-300`}></div>
-              
-              {/* Icon */}
-              <div className="text-4xl mb-6 transform group-hover:scale-110 transition-transform duration-300">
+              <div className="text-4xl mb-4 transform group-hover:scale-110 transition-transform duration-300">
                 {feature.icon}
               </div>
               
-              {/* Content */}
-              <h3 className="text-xl font-semibold text-gray-900 mb-3">
+              <h3 className="text-xl font-semibold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors">
                 {feature.title}
               </h3>
               <p className="text-gray-600 leading-relaxed">
                 {feature.description}
               </p>
               
-              {/* Hover effect line */}
-              <div className={`absolute bottom-0 left-0 w-0 h-1 bg-gradient-to-r ${colorMap[feature.color]} group-hover:w-full transition-all duration-500 rounded-full`}></div>
+              <div className="mt-4 flex items-center text-blue-600 group-hover:translate-x-1 transition-transform">
+                <span className="text-sm font-medium">Read More</span>
+                <span className="ml-1">→</span>
+              </div>
+            </a>
+          ))}
+        </div>
+
+        {/* Academic Tools & Resources */}
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            Academic Tools and Resources
+          </h2>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            Login with your school email to access personalized academic tools and resources
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
+          {toolsFeatures.map((feature, index) => (
+            <div
+              key={index}
+              className={`group bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border ${
+                feature.requiresLogin 
+                  ? 'border-orange-200 hover:border-orange-300' 
+                  : 'border-gray-100 hover:border-blue-200'
+              }`}
+            >
+              <div className="text-4xl mb-4 transform group-hover:scale-110 transition-transform duration-300">
+                {feature.icon}
+              </div>
+              
+              <h3 className="text-xl font-semibold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors">
+                {feature.title}
+              </h3>
+              <p className="text-gray-600 leading-relaxed mb-4">
+                {feature.description}
+              </p>
+              
+              {feature.requiresLogin ? (
+                <div className="flex items-center justify-between">
+                  <span className="text-sm text-orange-600 font-medium px-3 py-1 bg-orange-50 rounded-full">
+                    Login Required
+                  </span>
+                  <a
+                    href="/login"
+                    className="text-blue-600 hover:text-blue-700 font-semibold text-sm flex items-center"
+                  >
+                    Access
+                    <span className="ml-1">→</span>
+                  </a>
+                </div>
+              ) : (
+                <a
+                  href={feature.link}
+                  className="inline-flex items-center text-blue-600 hover:text-blue-700 font-semibold text-sm"
+                >
+                  Explore
+                  <span className="ml-1">→</span>
+                </a>
+              )}
             </div>
           ))}
         </div>
 
-        {/* CTA */}
-        <div className="text-center mt-16">
-          <div className="bg-gradient-to-r from-primary-50 to-blue-50 rounded-2xl p-8 lg:p-12">
-            <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
-              Ready to Transform Your Academic Experience?
-            </h3>
-            <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
-              Join thousands of DYCI students who are already using our platform to streamline their academic journey.
-            </p>
-            <a href="/register" className="btn btn-primary">
-              Get Started Today
+        {/* Call to Action for Login */}
+        <div className="bg-gradient-to-r from-blue-600 to-blue-800 rounded-2xl p-8 text-center text-white mb-20">
+          <h3 className="text-2xl font-bold mb-4">Ready to Access Your Tools?</h3>
+          <p className="text-blue-100 mb-6">
+            Sign in to unlock your personal academic dashboard, file vault, grade tracker, and more!
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <a
+              href="/login"
+              className="bg-white text-blue-900 px-6 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors"
+            >
+              Student Login
             </a>
+            <a
+              href="/login"
+              className="border-2 border-white text-white px-6 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-900 transition-colors"
+            >
+              Admin Login
+            </a>
+          </div>
+        </div>
+
+        {/* Vision & Mission */}
+        <div className="bg-white rounded-2xl p-8 lg:p-12 shadow-lg">
+          <div className="grid md:grid-cols-2 gap-12">
+            <div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">Our Vision</h3>
+              <p className="text-gray-600 leading-relaxed">
+                To be a leading educational institution committed to producing competent, 
+                ethical, and socially responsible professionals who contribute to national development.
+              </p>
+            </div>
+            <div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">Our Mission</h3>
+              <p className="text-gray-600 leading-relaxed">
+                To provide quality education through innovative instruction, research, 
+                and community service that fosters academic excellence and character formation.
+              </p>
+            </div>
+          </div>
+          
+          <div className="mt-8 pt-8 border-t border-gray-200">
+            <h4 className="text-lg font-semibold text-gray-900 mb-4">Core Values</h4>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 items-center">
+              {['Magis', 'Sapientia', 'Paraya'].map((value, index) => (
+                <div key={index} className="text-center p-3 bg-blue-50 rounded-lg">
+                  <span className="font-medium text-blue-900">{value}</span>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>

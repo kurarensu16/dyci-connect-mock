@@ -24,7 +24,6 @@ const Footer = () => {
             <ul className="space-y-2 text-gray-400">
               <li><a href="#home" className="hover:text-white transition-colors">Home</a></li>
               <li><a href="#features" className="hover:text-white transition-colors">Features</a></li>
-              <li><a href="#testimonials" className="hover:text-white transition-colors">Testimonials</a></li>
               <li><a href="#about" className="hover:text-white transition-colors">About</a></li>
             </ul>
           </div>
@@ -42,7 +41,7 @@ const Footer = () => {
           <div>
             <h3 className="font-semibold mb-4">Contact Info</h3>
             <div className="space-y-2 text-gray-400">
-              <p>support@dyci.edu</p>
+              <p>support@dyci.edu.ph</p>
               <p>+63 XXX-XXX-XXXX</p>
               <p>Dr. Yanga's Colleges Inc.</p>
             </div>
@@ -50,7 +49,7 @@ const Footer = () => {
         </div>
 
         <div className="border-t border-gray-800 pt-8 text-center text-gray-400">
-          <p>&copy; 2024 Dr. Yanga's Colleges. All rights reserved.</p>
+          <p>&copy; 2025 Dr. Yanga's Colleges. All rights reserved.</p>
         </div>
       </div>
     </footer>
