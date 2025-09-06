@@ -9,7 +9,7 @@ export default defineConfig({
       registerType: 'autoUpdate',
       includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'masked-icon.svg'],
        manifest: {
-        name: 'DYCI Connect - Student Hub',
+        name: 'DYCI Connect - Student Handbook',
         short_name: 'DYCI Connect',
         description: 'Your all-in-one academic platform for Dr. Yanga\'s Colleges',
         theme_color: '#2563eb',
