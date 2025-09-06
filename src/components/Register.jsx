@@ -108,20 +108,34 @@ const Register = () => {
       try {
         // Simulate API call
         await new Promise(resolve => setTimeout(resolve, 2000));
-        console.log('Registration data:', formData);
-        // Here you would typically:
-        // 1. Call your registration API
-        // 2. Handle the response
-        // 3. Redirect to login or dashboard
-        alert('Registration successful! Please check your email for verification.');
-        window.location.href = '/login';
+
+        // Extract only important info for login session
+        const user = {
+          firstName: formData.firstName,
+          lastName: formData.lastName,
+          email: formData.email,
+          studentId: formData.studentId,
+          college: formData.college,
+          course: formData.course,
+          yearLevel: formData.yearLevel,
+          role: "student" // default role
+        };
+
+        // ✅ Save to localStorage so Login & ProtectedRoute can use it
+        localStorage.setItem("user", JSON.stringify(user));
+
+        console.log("Registration successful:", user);
+
+        alert("Registration successful!");
+        window.location.href = "/dashboard"; // or "/login" if you prefer
       } catch (error) {
-        setErrors({ general: 'Registration failed. Please try again.' });
+        setErrors({ general: "Registration failed. Please try again." });
       } finally {
         setIsLoading(false);
       }
     }
   };
+
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-gray-100 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -10,6 +10,7 @@ const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [errors, setErrors] = useState({});
+  const navigate = useNavigate();
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -29,12 +30,12 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
-    
+
     // Simple validation
     const newErrors = {};
     if (!formData.email) newErrors.email = 'Email is required';
     if (!formData.password) newErrors.password = 'Password is required';
-    
+
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
       setIsLoading(false);
@@ -43,17 +44,24 @@ const Login = () => {
 
     try {
       // Simulate login API call
-      await new Promise(resolve => setTimeout(resolve, 1500));
-      
-      // Here you would typically:
-      // 1. Call your authentication API
-      // 2. Handle the response
-      // 3. Store the token
-      // 4. Redirect to dashboard
-      
-      console.log('Login attempt:', formData);
-      // Redirect would happen here based on userType
-      
+      await new Promise(resolve => setTimeout(resolve, 1200));
+
+      // ✅ Save user + auth state in localStorage
+      localStorage.setItem("isAuthenticated", "true");
+      localStorage.setItem("user", JSON.stringify({
+        email: formData.email,
+        role: formData.userType
+      }));
+
+      console.log("Login successful:", formData);
+
+      // ✅ Redirect based on userType
+      if (formData.userType === "student") {
+        navigate("/dashboard");
+      } else {
+        navigate("/admin"); // You can create an AdminDashboard later
+      }
+
     } catch (error) {
       setErrors({ general: 'Invalid credentials. Please try again.' });
     } finally {
@@ -64,6 +72,7 @@ const Login = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-gray-100 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-md w-full space-y-8">
+
         {/* Header */}
         <div className="text-center">
           <Link to="/" className="inline-flex items-center space-x-2 mb-8">
@@ -206,28 +215,28 @@ const Login = () => {
             </button>
           </form>
 
-          {/* Add this to the Login component */}
-            <div className="text-center mt-6">
+          {/* Register link */}
+          <div className="text-center mt-6">
             <p className="text-gray-600">
-                Don't have an account?{' '}
-                <a
+              Don't have an account?{' '}
+              <a
                 href="/register"
                 className="text-blue-600 hover:text-blue-500 font-semibold transition-colors"
-                >
+              >
                 Create account
-                </a>
+              </a>
             </p>
-            </div>
+          </div>
 
           {/* Demo Credentials Hint */}
           <div className="mt-6 p-4 bg-gray-50 rounded-lg">
             <p className="text-sm text-gray-600 text-center">
-              <strong>Demo:</strong> Use any email and password to test
+              <strong>Demo:</strong> Use any email & password to log in
             </p>
           </div>
         </div>
 
-        {/* Sign Up Link */}
+        {/* Support */}
         <div className="text-center">
           <p className="text-gray-600">
             Need help accessing your account?{' '}
@@ -262,6 +271,7 @@ const Login = () => {
             </div>
           </div>
         </div>
+
       </div>
     </div>
   );
