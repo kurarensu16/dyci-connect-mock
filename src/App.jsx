@@ -13,6 +13,14 @@ import Register from './components/Register';
 import StudentDashboard from './components/StudentDashboard';
 import ProtectedRoute from './components/ProtectedRoute'; // ✅ make sure this exists
 
+import DashboardLayout from './components/DashboardLayout';
+import Overview from './components/dashboard/Overview';
+import DashboardGWACalculator from './components/dashboard/GWACalculator';
+import EPortfolio from './components/dashboard/EPortfolio';
+import Handbook from './components/dashboard/Handbook';
+
+import AdminDashboard from './components/dashboard/AdminDashboard';
+
 function App() {
   const [isLoading, setIsLoading] = useState(true);
 
@@ -41,12 +49,23 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
 
-          {/* Protected Route */}
+          {/* Dashboard routes with persistent sidebar */}
+          <Route path="/dashboard" element={<DashboardLayout />}>
+            <Route index element={<Overview />} />
+            <Route path="gwa-calculator" element={<DashboardGWACalculator />} />
+            <Route path="grades" element={<div>Grades Page</div>} />
+            <Route path="tasks" element={<div>Tasks Page</div>} />
+            <Route path="files" element={<div>Files Page</div>} />
+            <Route path="handbook" element={<Handbook />} />
+            <Route path="calendar" element={<div>Calendar Page</div>} />
+            <Route path="e-portfolio" element={<EPortfolio />} />
+            <Route path="profile" element={<div>Profile Page</div>} />
+          </Route>
           <Route 
-            path="/dashboard" 
+            path="/admin-dashboard" 
             element={
-              <ProtectedRoute requiredRole="student">
-                <StudentDashboard />
+              <ProtectedRoute requiredRole="admin">
+                <AdminDashboard />
               </ProtectedRoute>
             } 
           />

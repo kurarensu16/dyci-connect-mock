@@ -62,6 +62,13 @@ const Login = () => {
         navigate("/admin"); // You can create an AdminDashboard later
       }
 
+      // After successful login
+      if (formData.userType === 'admin') {
+        window.location.href = '/admin-dashboard';
+      } else {
+        window.location.href = '/dashboard';
+      }
+
     } catch (error) {
       setErrors({ general: 'Invalid credentials. Please try again.' });
     } finally {

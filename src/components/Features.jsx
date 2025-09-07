@@ -1,39 +1,53 @@
 import React from 'react';
+import { 
+  GraduationCap, 
+  BookOpen, 
+  DollarSign, 
+  Building2, 
+  Scale, 
+  Calendar, 
+  FolderOpen, 
+  Calculator, 
+  CheckSquare, 
+  Shield, 
+  Smartphone, 
+  WifiOff
+} from 'lucide-react';
 
 const Features = () => {
   const handbookFeatures = [
     {
-      icon: '🎓',
+      icon: GraduationCap,
       title: 'Admission & Enrollment',
       description: 'Complete guide to enrollment procedures, subject loading, and registration changes.',
       link: '/handbook/chapter-1'
     },
     {
-      icon: '📚',
+      icon: BookOpen,
       title: 'Academic Policies',
       description: 'Access grading systems, examination policies, retention rules, and graduation requirements.',
       link: '/handbook/chapter-2'
     },
     {
-      icon: '💰',
+      icon: DollarSign,
       title: 'Scholarships & Discounts',
       description: 'Explore academic, cultural, athletic scholarships, and various discount programs available.',
       link: '/handbook/chapter-3'
     },
     {
-      icon: '🏫',
+      icon: Building2,
       title: 'Student Services',
       description: 'Discover library services, registrar office, research centers, and campus facilities.',
       link: '/handbook/chapter-4'
     },
     {
-      icon: '⚖️',
+      icon: Scale,
       title: 'Student Discipline',
       description: 'Understand the code of discipline, general decorum, and relevant campus policies.',
       link: '/handbook/chapter-5'
     },
     {
-      icon: '📅',
+      icon: Calendar,
       title: 'Academic Calendar',
       description: 'Stay updated with college events, examinations, holidays, and important deadlines.',
       link: '/calendar'
@@ -42,42 +56,42 @@ const Features = () => {
 
   const toolsFeatures = [
     {
-      icon: '📁',
-      title: 'Personal File Vault',
+      icon: FolderOpen,
+      title: 'Personal File Storage',
       description: 'Securely store and organize your notes, documents, and study materials with generous storage space.',
       link: '/files',
       requiresLogin: true
     },
     {
-      icon: '📊',
-      title: 'Grade Tracker',
-      description: 'Monitor your academic performance, calculate your GPA, and track your progress over time.',
-      link: '/grades',
+      icon: Calculator,
+      title: 'GWA Calculator',
+      description: 'Calculate your General Weighted Average and track academic performance.',
+      link: '/gwa-calculator',
       requiresLogin: true
     },
     {
-      icon: '✅',
+      icon: CheckSquare,
       title: 'Task Manager',
       description: 'Stay on top of assignments, deadlines, and projects with our intuitive to-do list and reminders.',
       link: '/tasks',
       requiresLogin: true
     },
     {
-      icon: '🔐',
+      icon: Shield,
       title: 'Digital Policy Acceptance',
       description: 'Digitally acknowledge and track your acceptance of important college policies and procedures.',
       link: '/policies',
       requiresLogin: true
     },
     {
-      icon: '📱',
+      icon: Smartphone,
       title: 'Mobile Access',
       description: 'Access all your academic resources on-the-go with our fully responsive mobile interface.',
       link: '/mobile',
       requiresLogin: false
     },
     {
-      icon: '🌐',
+      icon: WifiOff,
       title: 'Offline Access',
       description: 'Continue working even without internet connection - your data syncs when you\'re back online.',
       link: '/offline',
@@ -105,8 +119,8 @@ const Features = () => {
               href={feature.link}
               className="block group bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-blue-200"
             >
-              <div className="text-4xl mb-4 transform group-hover:scale-110 transition-transform duration-300">
-                {feature.icon}
+              <div className="text-4xl mb-4 transform group-hover:scale-110 transition-transform duration-300 text-blue-600">
+                <feature.icon className="w-10 h-10" />
               </div>
               
               <h3 className="text-xl font-semibold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors">
@@ -144,8 +158,8 @@ const Features = () => {
                   : 'border-gray-100 hover:border-blue-200'
               }`}
             >
-              <div className="text-4xl mb-4 transform group-hover:scale-110 transition-transform duration-300">
-                {feature.icon}
+              <div className="text-4xl mb-4 transform group-hover:scale-110 transition-transform duration-300 text-blue-600">
+                <feature.icon className="w-10 h-10" />
               </div>
               
               <h3 className="text-xl font-semibold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors">
